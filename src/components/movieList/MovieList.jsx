@@ -1,11 +1,18 @@
 import react from "react";
 import PropTypes from "prop-types";
-import MovieCard from "../moviecard/MovieCard";
+//import MovieCard from "../moviecard/MovieCard";
+import { Link } from "react-router-dom";
+
 const MovieList = ({ movies }) => {
   return (
-    <div className="movie-list">
-      {movies.map((movie, index) => (
-        <MovieCard key={index} movie={movie} />
+    <div>
+      {movies.map((movie) => (
+        <div key={movie.title}>
+          <h3>{movie.title}</h3>
+          <img src={movie.posterURL} alt={movie.title} />
+          <p>{movie.description}</p>
+          <Link to={`/movie/${movie.title}`}>View Details</Link>
+        </div>
       ))}
     </div>
   );
